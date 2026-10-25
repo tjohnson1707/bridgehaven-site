@@ -97,7 +97,7 @@ section.block{padding-block:clamp(56px,8vw,104px)}
 .contact{background:var(--navy);color:#fff}
 .contact h2{color:#fff;font-size:clamp(2.2rem,5vw,4rem);margin-bottom:18px}
 .contact .lede{color:#C9D3E0;font-size:1.1rem}
-.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
 .cbox{border-top:2px solid var(--gold);padding-top:16px;min-width:0}
 .cbox span{display:block;font:700 11.5px/1.3 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:8px}
 .cbox a,.cbox address{color:#fff;font:400 1.35rem/1.4 var(--serif);font-style:normal;overflow-wrap:anywhere;text-decoration:none}
@@ -129,14 +129,45 @@ footer a{color:var(--navy);font-weight:600}
   .notice .wrap{flex-direction:column;gap:6px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* hiring banner */
+.hiring{background:var(--gold-lt);color:var(--navy);border-bottom:1px solid var(--gold)}
+.hiring .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 14px;padding-block:10px;text-align:center;font-size:15px}
+.hiring strong{letter-spacing:.14em;text-transform:uppercase;font-size:12.5px}
+.hiring a{color:var(--navy);font-weight:700;text-decoration:none;border-bottom:2px solid var(--navy);padding-bottom:1px}
+.hiring a:hover{color:var(--green);border-bottom-color:var(--green)}
+
+/* careers */
+.job{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--gold)}
+.job>summary{list-style:none;cursor:pointer;padding:clamp(24px,4vw,44px);display:grid;grid-template-columns:1fr auto;gap:16px 32px;align-items:center}
+.job>summary::-webkit-details-marker{display:none}
+.job h3{font-size:clamp(1.6rem,3.2vw,2.3rem);margin-bottom:10px}
+.job .jmeta{color:var(--muted);margin:0;max-width:none}
+.job .toggle{font-weight:700;color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:3px;white-space:nowrap}
+.job[open] .toggle .open-txt,.job:not([open]) .toggle .close-txt{display:none}
+.job .jbody{padding:0 clamp(24px,4vw,44px) clamp(28px,4vw,48px);border-top:1px solid var(--line)}
+.job h4{font:400 1.4rem/1.2 var(--serif);color:var(--navy);margin:32px 0 10px}
+.job h5{font:700 12.5px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin:18px 0 6px}
+.job ul{padding-left:1.2em;margin:0 0 1em;max-width:70ch}
+.job li{margin-bottom:.4em}
+.job .eeo{font-style:italic;color:var(--muted);margin-top:24px}
+mark.blank{background:#FFE14D;color:var(--ink);padding:1px 6px;border-radius:3px;font-weight:700;outline:2px dashed #B8860B}
+
+/* office hours */
+.hours{list-style:none;margin:0;padding:0;font:400 1.1rem/1.6 var(--serif);color:#fff}
+.hours li{display:flex;justify-content:space-between;gap:16px;max-width:280px}
+.cbox .hours li span{display:inline;font:inherit;letter-spacing:normal;text-transform:none;margin:0;color:#C9D3E0}
+#careers{scroll-margin-top:110px}
+@media (max-width:900px){.job>summary{grid-template-columns:1fr}#careers{scroll-margin-top:12px}}
 </style>
 </head><body>
 <a class="skip" href="#main">Skip to main content</a>
+<div class="hiring" role="region" aria-label="Job opening"><div class="wrap"><strong>We&rsquo;re hiring</strong><span>DME Office Associate in Virginia Beach.</span><a href="index.html#careers" data-open-careers>See the role and apply</a></div></div>
 <header class="top"><div class="wrap">
 <a class="brand" href="index.html" aria-label="BridgeHaven Medical Equipment home"><img src="logo-mark.png" alt="" width="64" height="48"><span><b>BRIDGEHAVEN</b><small>Medical Equipment</small></span></a>
 <nav aria-label="Primary"><ul>
 <li><a href="index.html#solutions">Solutions</a></li>
 <li><a href="index.html#vendors">For vendors</a></li>
+<li><a href="index.html#careers">Careers</a></li>
 <li><a href="index.html#contact">Contact</a></li>
 </ul></nav></div></header>
 <main id="main">
@@ -170,6 +201,78 @@ footer a{color:var(--navy);font-weight:600}
 <div class="side"><h3>Quality. Reliability. Partnership.</h3><p>We are interested in transparent terms, responsive account support, strong fulfillment, and products backed by appropriate documentation.</p></div>
 </div></div></section>
 
+<section class="block" id="careers"><div class="wrap">
+<div class="head"><h2>Join our first team.</h2><p>We&rsquo;re hiring our first team member to help us open the doors in Virginia Beach.</p></div>
+<details class="job" id="job-office-associate">
+<summary>
+<div><span class="tag" style="font:700 11.5px/1.3 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--green)">Now hiring</span>
+<h3>DME Office Associate (Patient Intake &amp; Order Coordinator)</h3>
+<p class="jmeta">Virginia Beach, VA 23464 &middot; On-site &middot; <mark class="blank">FILL IN: Full-time or part-time</mark> &middot; Pay: <mark class="blank">FILL IN: $__ to $__ per hour</mark></p></div>
+<span class="toggle"><span class="open-txt">Read the full job description</span><span class="close-txt">Hide job description</span></span>
+</summary>
+<div class="jbody">
+<h4>About us</h4>
+<p>BridgeHaven Medical Equipment is a new, clinician-owned durable medical equipment (DME) company in Virginia Beach. We provide orthopedic braces and mobility equipment to patients. Most items ship directly to the patient, and some patients come to our office for pickup and fitting. We&rsquo;re building a small, careful team that treats every patient like family and every file like it will be audited.</p>
+<h4>The role</h4>
+<p>You&rsquo;ll be our first team member and the front line of the business. You&rsquo;ll be the first voice patients, caregivers, and doctors&rsquo; offices hear. You&rsquo;ll take in orders, build complete patient files, verify insurance, and coordinate fittings and deliveries. You&rsquo;ll report to the owners and work closely with our Compliance Officer to keep every file accurate and audit-ready.</p>
+<h4>What you&rsquo;ll do</h4>
+<ul>
+<li>Answer calls, faxes, emails, and walk-ins from patients, caregivers, and provider offices with a warm, professional manner</li>
+<li>Take in and enter DME orders, and check that each one is complete and accurate</li>
+<li>Build and maintain complete patient files: orders, medical-necessity documents, and proof of delivery</li>
+<li>Get needed paperwork from provider offices, such as physician orders and certificates of medical need</li>
+<li>Verify insurance and workers&rsquo; compensation eligibility, explain coverage to patients, and help get prior authorizations</li>
+<li>Prepare delivery paperwork and patient acknowledgments, and confirm patients received their equipment and know how to use it</li>
+<li>Schedule fittings, pickups, deliveries, and follow-up calls</li>
+<li>Track inventory and reorder supplies</li>
+<li>Keep up relationships with referring offices through great service and fast responses</li>
+<li>Protect patient health information (PHI) under HIPAA and our privacy policies</li>
+<li>Complete required training and report any compliance or privacy concern to the Compliance Officer right away</li>
+<li>Support billing and give general office support as needed</li>
+</ul>
+<h4>What you bring</h4>
+<h5>Required</h5>
+<ul>
+<li>High school diploma or equivalent</li>
+<li>Customer service or medical office experience</li>
+<li>Strong computer, data entry, and organization skills, with close attention to detail</li>
+<li>Clear, professional phone manner and writing</li>
+<li>Able to handle several tasks and a busy phone line without dropping details</li>
+<li>Dependable, on time, and discreet with confidential information</li>
+<li>Willing to complete HIPAA and compliance training and follow all company policies</li>
+</ul>
+<h5>Preferred</h5>
+<ul>
+<li>DME, orthopedic, or other healthcare experience</li>
+<li>Knowledge of medical terms, insurance verification, and prior authorizations</li>
+<li>Experience with EMR or billing software and Microsoft Office</li>
+<li>Associate or bachelor&rsquo;s degree</li>
+</ul>
+<h4>Schedule, pay &amp; work setting</h4>
+<ul>
+<li><strong>Schedule:</strong> <mark class="blank">FILL IN: days</mark>, <mark class="blank">FILL IN: __ to __ (hours)</mark>, matching our posted office hours</li>
+<li><strong>Pay:</strong> <mark class="blank">FILL IN: $__ to $__</mark> per hour, based on experience</li>
+<li><strong>Benefits:</strong> <mark class="blank">FILL IN: benefits you will actually provide, e.g. paid time off, paid holidays, paid training</mark></li>
+<li><strong>Setting:</strong> Our office at 900 Commonwealth Place, Virginia Beach. Mostly phone and computer work, with some sitting for long periods.</li>
+<li><strong>Physical:</strong> You may sometimes lift or move equipment and supplies up to about 25 lbs.</li>
+<li><strong>Driving:</strong> A valid driver&rsquo;s license is required only if the role includes equipment delivery. <mark class="blank">FILL IN: delivery duties yes or no? Keep this line for yes, delete it for no</mark></li>
+</ul>
+<h4>Before your start date</h4>
+<p>We&rsquo;re a DME supplier working toward Medicare accreditation, so every new hire completes these steps:</p>
+<ul>
+<li>Federal exclusion checks (OIG and SAM) before your first day</li>
+<li>At least two previous-employer references</li>
+<li>HIPAA and Fraud, Waste &amp; Abuse training, at hire and every year</li>
+<li>Signed job description, Standards of Conduct, and Pledge of Confidentiality</li>
+<li>Hepatitis B vaccine and TB screening offered at no cost to you</li>
+</ul>
+<h4>How to apply</h4>
+<p>Apply through Indeed with your resume. In a few sentences, tell us about a time you caught a mistake before it became a problem. We&rsquo;ll contact qualified candidates for an interview.</p>
+<p><a class="btn" href="#">Apply on Indeed</a> <mark class="blank">FILL IN: paste the Indeed posting link into this button</mark></p>
+<p class="eeo">BridgeHaven Medical Equipment is an equal opportunity employer.</p>
+</div>
+</details>
+</div></section>
 <section class="block contact on-navy" id="contact"><div class="wrap">
 <div class="eyebrow">Connect with BridgeHaven</div>
 <h2>Be part of what we&rsquo;re building.</h2>
@@ -178,15 +281,23 @@ footer a{color:var(--navy);font-weight:600}
 <div class="cbox"><span>Office phone</span><a href="tel:+17577347155">757-734-7155</a></div>
 <div class="cbox"><span>Email</span><a href="mailto:info@bridgehavendme.com">info@bridgehavendme.com</a></div>
 <div class="cbox"><span>Office</span><address>900 Commonwealth Place, Suite 210<br>Virginia Beach, VA 23464</address></div>
+<div class="cbox"><span>Office hours</span><ul class="hours"><li>Mon&ndash;Tue <span>9 am&ndash;5 pm</span></li><li>Wed&ndash;Thu <span>9 am&ndash;4 pm</span></li><li>Fri&ndash;Sun <span>Closed</span></li></ul></div>
 </div>
 <p class="fine"><strong>Please do not send medical or personal health information by email.</strong> BridgeHaven is not yet accepting patient orders. If you have a medical emergency, call 911.</p>
 </div></section>
 </main>
 <footer><div class="wrap">
-<div><p><strong>BridgeHaven Medical Equipment, LLC</strong></p><p>900 Commonwealth Place, Suite 210, Virginia Beach, VA 23464</p><p>757-734-7155 &middot; info@bridgehavendme.com</p><p>&copy; 2026 BridgeHaven Medical Equipment, LLC. All rights reserved.</p></div>
+<div><p><strong>BridgeHaven Medical Equipment, LLC</strong></p><p>900 Commonwealth Place, Suite 210, Virginia Beach, VA 23464</p><p>757-734-7155 &middot; info@bridgehavendme.com</p><p>Office hours: Mon&ndash;Tue 9 am&ndash;5 pm &middot; Wed&ndash;Thu 9 am&ndash;4 pm &middot; Fri&ndash;Sun closed</p><p>&copy; 2026 BridgeHaven Medical Equipment, LLC. All rights reserved.</p></div>
 <nav aria-label="Legal"><ul>
 <li><a href="privacy.html">Privacy Policy</a></li>
 <li><a href="terms.html">Terms of Use</a></li>
 <li><a href="accessibility.html">Accessibility</a></li>
 </ul></nav></div></footer>
+<script>
+/* Opens the job description when someone arrives from the hiring banner */
+(function(){var d=document.getElementById('job-office-associate');if(!d)return;
+function o(){if(location.hash==='#careers'){d.open=true;requestAnimationFrame(function(){document.getElementById('careers').scrollIntoView();});}}
+o();window.addEventListener('hashchange',o);
+document.querySelectorAll('[data-open-careers]').forEach(function(a){a.addEventListener('click',function(){d.open=true;});});})();
+</script>
 </body></html>

@@ -129,14 +129,45 @@ footer a{color:var(--navy);font-weight:600}
   .notice .wrap{flex-direction:column;gap:6px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* hiring banner */
+.hiring{background:var(--gold-lt);color:var(--navy);border-bottom:1px solid var(--gold)}
+.hiring .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 14px;padding-block:10px;text-align:center;font-size:15px}
+.hiring strong{letter-spacing:.14em;text-transform:uppercase;font-size:12.5px}
+.hiring a{color:var(--navy);font-weight:700;text-decoration:none;border-bottom:2px solid var(--navy);padding-bottom:1px}
+.hiring a:hover{color:var(--green);border-bottom-color:var(--green)}
+
+/* careers */
+.job{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--gold)}
+.job>summary{list-style:none;cursor:pointer;padding:clamp(24px,4vw,44px);display:grid;grid-template-columns:1fr auto;gap:16px 32px;align-items:center}
+.job>summary::-webkit-details-marker{display:none}
+.job h3{font-size:clamp(1.6rem,3.2vw,2.3rem);margin-bottom:10px}
+.job .jmeta{color:var(--muted);margin:0;max-width:none}
+.job .toggle{font-weight:700;color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:3px;white-space:nowrap}
+.job[open] .toggle .open-txt,.job:not([open]) .toggle .close-txt{display:none}
+.job .jbody{padding:0 clamp(24px,4vw,44px) clamp(28px,4vw,48px);border-top:1px solid var(--line)}
+.job h4{font:400 1.4rem/1.2 var(--serif);color:var(--navy);margin:32px 0 10px}
+.job h5{font:700 12.5px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin:18px 0 6px}
+.job ul{padding-left:1.2em;margin:0 0 1em;max-width:70ch}
+.job li{margin-bottom:.4em}
+.job .eeo{font-style:italic;color:var(--muted);margin-top:24px}
+mark.blank{background:#FFE14D;color:var(--ink);padding:1px 6px;border-radius:3px;font-weight:700;outline:2px dashed #B8860B}
+
+/* office hours */
+.hours{list-style:none;margin:0;padding:0;font:400 1.1rem/1.6 var(--serif);color:#fff}
+.hours li{display:flex;justify-content:space-between;gap:16px;max-width:280px}
+.cbox .hours li span{display:inline;font:inherit;letter-spacing:normal;text-transform:none;margin:0;color:#C9D3E0}
+#careers{scroll-margin-top:110px}
+@media (max-width:900px){.job>summary{grid-template-columns:1fr}#careers{scroll-margin-top:12px}}
 </style>
 </head><body>
 <a class="skip" href="#main">Skip to main content</a>
+<div class="hiring" role="region" aria-label="Job opening"><div class="wrap"><strong>We&rsquo;re hiring</strong><span>DME Office Associate in Virginia Beach.</span><a href="index.html#careers" data-open-careers>See the role and apply</a></div></div>
 <header class="top"><div class="wrap">
 <a class="brand" href="index.html" aria-label="BridgeHaven Medical Equipment home"><img src="logo-mark.png" alt="" width="64" height="48"><span><b>BRIDGEHAVEN</b><small>Medical Equipment</small></span></a>
 <nav aria-label="Primary"><ul>
 <li><a href="index.html#solutions">Solutions</a></li>
 <li><a href="index.html#vendors">For vendors</a></li>
+<li><a href="index.html#careers">Careers</a></li>
 <li><a href="index.html#contact">Contact</a></li>
 </ul></nav></div></header>
 <main id="main" class="doc"><div class="wrap">
@@ -165,7 +196,7 @@ footer a{color:var(--navy);font-weight:600}
 
 </div></main>
 <footer><div class="wrap">
-<div><p><strong>BridgeHaven Medical Equipment, LLC</strong></p><p>900 Commonwealth Place, Suite 210, Virginia Beach, VA 23464</p><p>757-734-7155 &middot; info@bridgehavendme.com</p><p>&copy; 2026 BridgeHaven Medical Equipment, LLC. All rights reserved.</p></div>
+<div><p><strong>BridgeHaven Medical Equipment, LLC</strong></p><p>900 Commonwealth Place, Suite 210, Virginia Beach, VA 23464</p><p>757-734-7155 &middot; info@bridgehavendme.com</p><p>Office hours: Mon&ndash;Tue 9 am&ndash;5 pm &middot; Wed&ndash;Thu 9 am&ndash;4 pm &middot; Fri&ndash;Sun closed</p><p>&copy; 2026 BridgeHaven Medical Equipment, LLC. All rights reserved.</p></div>
 <nav aria-label="Legal"><ul>
 <li><a href="privacy.html">Privacy Policy</a></li>
 <li><a href="terms.html">Terms of Use</a></li>
