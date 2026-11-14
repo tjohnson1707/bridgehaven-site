@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Employee Training | BridgeHaven Medical Equipment</title>
+<link rel="icon" href="../favicon.png">
+<style>
+:root{
+  --cream:#FBF2E7; --paper:#FFFBF5; --sand:#EFE3CF; --navy:#0B2545; --green:#0F5C3F; --green-dk:#0A4530;
+  --gold:#B8923A; --gold-lt:#E2C67E; --ink:#1E2A3A; --muted:#475467; --line:#E3D5BC; --red:#9B2C2C; --red-bg:#FBEAEA;
+  --serif:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{font-size:20px}
+body{margin:0;background:var(--cream);color:var(--ink);font:1rem/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);font-weight:400;line-height:1.15;margin:0}
+h1{font-size:2rem} h2{font-size:1.6rem} h3{font-size:1.25rem}
+p{margin:0 0 .8rem}
+a{color:var(--green)}
+:focus-visible{outline:4px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header.top{background:var(--paper);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:80px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy)}
+.brand img{width:48px;height:auto}
+.brand b{display:block;font:400 1rem/1.1 var(--serif);letter-spacing:.18em}
+.brand small{display:block;font:700 .62rem/1.3 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-top:3px}
+.signout{background:none;border:2px solid var(--navy);color:var(--navy);font:700 .85rem var(--sans);padding:10px 16px;border-radius:8px;cursor:pointer;min-height:48px}
+main{padding:32px 0 60px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:28px;margin-bottom:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--green);color:#fff;border:0;border-radius:10px;
+  font:700 1.1rem var(--sans);padding:16px 28px;min-height:60px;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--green-dk)}
+.btn[disabled]{background:#9AA5A0;cursor:not-allowed}
+.btn.big{width:100%;font-size:1.2rem;min-height:68px}
+.btn.secondary{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.btn.secondary:hover{background:var(--sand)}
+label.field{display:block;font-weight:700;font-size:1.05rem;margin:0 0 8px;color:var(--navy)}
+input.text{width:100%;font:1.3rem var(--sans);padding:14px 16px;border:2px solid var(--muted);border-radius:10px;background:#fff;min-height:62px}
+input.text:focus{border-color:var(--green);outline:none;box-shadow:0 0 0 4px rgba(15,92,63,.2)}
+.hint{color:var(--muted);font-size:.9rem}
+.msg{border-radius:10px;padding:16px 18px;margin:16px 0;font-size:1.05rem}
+.msg.error{background:var(--red-bg);border:2px solid var(--red);color:var(--red)}
+.msg.good{background:#E6F2EC;border:2px solid var(--green);color:var(--green-dk)}
+.msg.info{background:var(--sand);border:2px solid var(--gold);color:var(--navy)}
+.check{display:flex;align-items:center;gap:12px;font-size:1rem;margin:18px 0;cursor:pointer}
+.check input{width:28px;height:28px}
+.overall{font-size:1.15rem;margin-bottom:12px}
+.bar{height:28px;background:#E7DCC8;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.bar > span{display:block;height:100%;background:var(--green);border-radius:14px;transition:width .4s}
+.modlist{list-style:none;margin:0;padding:0}
+.modlist li{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 0;border-top:1px solid var(--line);flex-wrap:wrap}
+.modlist li:first-child{border-top:0}
+.modlist .name{font-size:1.1rem;color:var(--navy);font-weight:600}
+.modlist .num{display:inline-block;min-width:2.2em;color:var(--gold);font-family:var(--serif)}
+.status{font-weight:700;font-size:.95rem;padding:8px 14px;border-radius:999px;white-space:nowrap}
+.status.done{background:#E6F2EC;color:var(--green-dk)}
+.status.next{background:var(--gold-lt);color:var(--navy)}
+.status.locked{background:#ECE8E1;color:var(--muted)}
+.modlist .btn{min-height:52px;padding:10px 20px;font-size:1rem}
+.back{display:inline-flex;align-items:center;gap:8px;font:700 1rem var(--sans);color:var(--navy);background:none;border:0;cursor:pointer;padding:10px 0;margin-bottom:12px;min-height:48px}
+.video{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}
+.video > div,.video iframe{position:absolute;inset:0;width:100%;height:100%}
+.video .placeholder{display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:24px;font-size:1.2rem;background:var(--navy)}
+.watch{margin-top:18px}
+.watch .label{display:flex;justify-content:space-between;align-items:baseline;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.watch .label strong{font-size:1.6rem;color:var(--green)}
+fieldset.q{border:2px solid var(--line);border-radius:12px;padding:20px;margin:0 0 20px;background:#fff}
+fieldset.q.missing{border-color:var(--red)}
+fieldset.q legend{font-weight:700;font-size:1.1rem;color:var(--navy);padding:0 8px}
+.opt{display:flex;align-items:flex-start;gap:14px;border:2px solid var(--line);border-radius:10px;padding:14px 16px;margin-top:12px;cursor:pointer;font-size:1.05rem;background:var(--paper)}
+.opt:hover{border-color:var(--green)}
+.opt input{width:28px;height:28px;flex:none;margin-top:2px;accent-color:var(--green)}
+.opt.selected{border-color:var(--green);background:#E6F2EC}
+.opt .letter{font-weight:700;color:var(--green);min-width:1.4em}
+.result{text-align:center}
+.result .score{font-family:var(--serif);font-size:3rem;color:var(--navy);line-height:1.1;margin:10px 0}
+.center{text-align:center}
+.spinner{display:inline-block;width:26px;height:26px;border:4px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite;vertical-align:middle}
+.spinner.dark{border-color:rgba(11,37,69,.2);border-top-color:var(--navy)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;padding:24px 0;background:var(--paper)}
+@media (max-width:600px){html{font-size:18px}.card{padding:20px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../"><img src="../logo-mark.png" alt=""><span><b>BRIDGEHAVEN</b><small>Employee Training</small></span></a>
+  <button class="signout" id="signout" hidden>Sign out</button>
+</div></header>
+
+<main><div class="wrap" id="app" aria-live="polite"></div></main>
+
+<footer><div class="wrap">BridgeHaven Medical Equipment, LLC &middot; Employee training. This page is for BridgeHaven staff only. Need help? Ask Suzette.</div></footer>
+
+<script>
+/* ===================== SETTINGS (Tiffany / Suzette edit these) =====================
+   API_URL: the web app address from the Google Apps Script "Deploy" step.
+   VIDEOS:  the YouTube video ID for each module. Upload each video to YouTube as
+            "Unlisted", copy its link (for example https://youtu.be/AbC123xyz), and
+            paste the part after the last "/" here, inside the quotes.            */
+var API_URL = 'PASTE_WEB_APP_URL_HERE';
+var VIDEOS = {
+  1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '', 10: '', 11: ''
+};
+/* =================================================================================== */
+
+var UNLOCK_AT = 90;
+
+var MODULES = [
+ {n:1,title:'Welcome to BridgeHaven',q:[
+  ['What are BridgeHaven’s office hours on a Monday?',['9 a.m. to 4 p.m.','9 a.m. to 5 p.m.','8 a.m. to 5 p.m.','Closed']],
+  ['Who is BridgeHaven’s Compliance Officer?',['Tiffany Johnson','The billing company','Suzette Rosen','The new employee']],
+  ['Who checks insurance eligibility and gets prior authorizations?',['You, the Office Associate','Easy Billing Services, our billing company','The patient','The doctor’s office']],
+  ['How do most BridgeHaven braces get to patients?',['They ship straight to the patient’s door','The patient picks them up at the hospital','They are mailed to the doctor','The employee drives them to every home']],
+  ['A caller says they are having a medical emergency. What do you tell them?',['Wait for a call back tomorrow','Hang up and call 911','Come to the office right away','Send an email to info@bridgehavendme.com']]]},
+ {n:2,title:'Corporate Compliance and Standards of Conduct',q:[
+  ['Who is BridgeHaven’s Compliance Officer?',['The billing company','Suzette Rosen','Any employee','The landlord']],
+  ['A doctor’s office sends you a gift card as a thank you. What should you do?',['Keep it, because it was a gift','Share it with the office','Politely say no and tell Suzette','Give it to a patient']],
+  ['You report a concern in good faith, and it turns out nothing was wrong. What happens to you?',['You get in trouble','Nothing bad. BridgeHaven does not punish good-faith reports','You lose your job','You get a note in your file']],
+  ['When do you sign the Standards of Conduct?',['Only when you are hired','Only if you break a rule','When you are hired and again every year','Never']],
+  ['What usually happens the first time an employee breaks a rule of conduct?',['They are counseled, and a note goes in their personnel file','Nothing','They get a raise','They are moved to another company']]]},
+ {n:3,title:'Fraud, Waste and Abuse',q:[
+  ['BridgeHaven bills Medicare for a brace that was never delivered. What is this?',['Waste','Fraud','Good customer service','A normal mistake']],
+  ['Can BridgeHaven tell every patient, “We will waive your co-pay”?',['Yes, it helps patients','Yes, if the patient asks nicely','No. A co-pay can only be lowered case by case for real financial need, with written approval','Yes, but only for Medicare patients']],
+  ['What are the OIG and SAM lists?',['Lists of our best customers','Lists of people and companies banned from federal health programs','Lists of brace makers','Lists of doctors near our office']],
+  ['A coworker asks you to sign a patient’s name on a delivery form. What do you do?',['Sign it to save time','Sign your own name instead','Refuse and tell Suzette','Ask the patient’s neighbor to sign']],
+  ['Medicare usually pays 80 percent. Who is billed for the other 20 percent?',['Nobody','The doctor','The patient’s second insurance or the patient','BridgeHaven pays it']]]},
+ {n:4,title:'Medicare Supplier Standards and Physician Checks',q:[
+  ['How many hours a week must BridgeHaven be open to the public?',['At least 20','At least 30','At least 40','Only when we have orders']],
+  ['During office hours, how must the phone be answered?',['Only by an answering machine','By a real person in the office','Only by a cell phone','It does not need to be answered']],
+  ['May you call Medicare patients out of the blue to offer them a brace?',['Yes, if they are local','Yes, if business is slow','No. That is not allowed','Yes, but only on Fridays']],
+  ['What two doctor checks must be done on every order?',['The doctor’s age and address','State license verified, and enrolled in PECOS','The doctor’s school and hobbies','None']],
+  ['A patient says their brace was not right for them when they got it. What does Medicare require?',['We accept the return','We refuse all returns','The patient must keep it','The patient must call Medicare']]]},
+ {n:5,title:'HIPAA and Patient Privacy',q:[
+  ['Which of these is PHI?',['Our office hours','A patient’s name and the brace they ordered','The weather today','The name of our street']],
+  ['What does “minimum necessary” mean?',['Share as much as you can','Only use the smallest amount of PHI needed to do your job','Work the fewest hours possible','Keep the fewest files possible']],
+  ['A caller says she is a patient’s daughter. Her name is not in the file as someone allowed to get information. What do you do?',['Tell her everything, because she is family','Kindly say you can’t share without the patient’s permission, and let Suzette know','Hang up on her','Email her the file']],
+  ['You fax a patient’s paperwork to the wrong office by mistake. What do you do?',['Ignore it','Fix it quietly and tell no one','Tell Suzette right away','Wait until the end of the month']],
+  ['How long does BridgeHaven keep an adult patient’s file?',['1 year','3 years','7 years','Forever']]]},
+ {n:6,title:'Patient Rights, Customer Service and Complaints',q:[
+  ['How soon does BridgeHaven respond to a patient complaint?',['Within 5 calendar days','Within 30 days','Within 1 year','Only if the patient calls again']],
+  ['A patient is still unhappy after we try to fix the problem. Who else can they contact?',['No one','The Compliance Team, at 1-888-291-5353','The brace maker','Our landlord']],
+  ['Which of these is a patient right?',['Getting free equipment','Complaining without fear of losing service','Picking any office hours they want','Reading other patients’ files']],
+  ['How soon after delivery does BridgeHaven call the patient to follow up?',['Within 72 hours','Within 2 weeks','Within 6 months','We never call']],
+  ['Which of these is a patient responsibility?',['Training our staff','Telling us when their address or phone number changes','Answering our phones','Writing their own doctor’s order']]]},
+ {n:7,title:'Order Intake and Documentation',q:[
+  ['An order arrives by fax. What must you write down right away?',['The weather','The date, the time, and who received it','The patient’s favorite color','Nothing']],
+  ['An order is missing the doctor’s medical necessity paperwork. What do you do?',['Fill it in yourself','Ship the brace anyway','Ask the doctor’s office to send it. The order is not complete until it arrives','Throw the order away']],
+  ['What does “laterality” mean on a brace order?',['How late the order arrived','Left side, right side, or both sides','The color of the brace','The patient’s age']],
+  ['A brace was shipped to the patient’s door. What can serve as proof of delivery?',['A tracking receipt that shows it was delivered','A sticky note','Your memory','Nothing is needed']],
+  ['The patient cannot sign. Who signs, and what else is written down?',['You sign for the patient','Nobody signs','The authorized representative signs and writes their name, relationship, and why the patient can’t sign','The doctor signs']]]},
+ {n:8,title:'Orthopedic Brace Basics',q:[
+  ['Which code is a wrist brace?',['L0457','L3916','L1833','L3761']],
+  ['What is true about the L2397 knee sleeve?',['It is only given together with a knee brace','It is a back brace','It is always given alone','It is for the wrist']],
+  ['What do we check before a brace goes to a patient?',['Nothing','Only the price','That it is in good shape, complete, and matches the doctor’s order','Only the color']],
+  ['Which of these is part of what every patient is taught?',['How to bill Medicare','How to check their skin for redness, sores, pain, or swelling','How to answer our phones','How to order more braces online']],
+  ['A patient calls and says the skin under their brace is red and sore. What do you do?',['Tell them it is normal','Write it in their file and tell Suzette right away','Tell them to stop calling','Wait until the next follow-up call']]]},
+ {n:9,title:'Infection Control, OSHA and Clean vs. Dirty',q:[
+  ['What does “universal precautions” mean?',['Only sick patients need gloves','Treat all blood and certain body fluids as if they could carry germs','Wash your hands once a week','Wear gloves only on Mondays']],
+  ['A patient returns a brace. Where does it go?',['Right back on the clean shelf','In a separate area, away from clean items, until it is cleaned and checked','On the floor by the door','On your desk']],
+  ['Where should equipment and supplies be stored?',['On the floor','On shelves, on tables, or in boxes, never on the floor','In your car','In the hallway']],
+  ['What does BridgeHaven offer you about the Hepatitis B vaccine?',['Nothing','You must pay for it','It is offered at no cost, and you may say no by signing a form','It is required with no choice']],
+  ['What does a Safety Data Sheet (SDS) tell you?',['Your work schedule','How to use a chemical safely and what to do if it touches your skin or eyes','A patient’s insurance','Our office hours']]]},
+ {n:10,title:'Quality, Incidents and Emergencies',q:[
+  ['How often does BridgeHaven’s improvement team meet?',['Every 3 months, and more often if needed','Once every 5 years','Never','Only when a patient asks']],
+  ['You hurt your back lifting a box at work. When do you fill out an incident report?',['Never','Right away','Next month','Only if you go to the hospital']],
+  ['The fire alarm goes off. What do you do?',['Finish your phone call first','Grab your belongings, then leave','Leave right away without your belongings and meet in front of the building','Hide in the office']],
+  ['Why does everyone meet in front of the building after leaving?',['For a roll call, to make sure everyone got out','To take a break','To talk to patients','To wait for the mail']],
+  ['Bad weather makes the roads unsafe. What happens?',['You must drive in anyway','One of the owners, or someone they choose, will contact you','The office stays open with no one there','Patients are not told anything']]]},
+ {n:11,title:'Final Review and Sign-Off',q:[
+  ['How many hours a week must BridgeHaven be open and staffed?',['20','25','30','40']],
+  ['Who do you report complaints, incidents, and privacy problems to?',['The billing company','Suzette Rosen','The landlord','A coworker’s friend']],
+  ['Who checks insurance eligibility and gets prior authorizations?',['You','The patient','Easy Billing Services','The brace maker']],
+  ['Changing a date on a form so a claim gets paid is an example of what?',['Fraud','Good service','Waste','Quality improvement']],
+  ['What are the two checks for every ordering doctor?',['Age and hometown','State license verified, and enrolled in PECOS','Favorite brace and office color','None']],
+  ['A friend asks you about a patient you helped today. What do you do?',['Share only the patient’s first name','Tell them everything','Say nothing about the patient','Show them the file']],
+  ['Within how many calendar days does BridgeHaven respond to a complaint?',['5','14','30','60']],
+  ['What is the most important paper for billing a delivered brace?',['A sticky note','Proof of delivery','The patient’s grocery list','The weather report']],
+  ['A patient returns a used brace. Where does it go first?',['On the clean shelf','In a separate dirty area until it is cleaned and checked','On the floor','In another patient’s box']],
+  ['How often do you retake HIPAA and Fraud, Waste and Abuse training?',['Never','Every year','Every 10 years','Only if you ask']]]}
+];
+
+var LETTERS = ['A','B','C','D'];
+var LOGIN_KEY = 'bh_training_login';
+var app = document.getElementById('app');
+var signoutBtn = document.getElementById('signout');
+var who = null;        // {name, pin}
+var progressData = null;     // server status: {name, modules:[...]}
+var player = null, ticker = null;
+
+/* ---------- small helpers ---------- */
+function el(tag, attrs, kids){
+  var e = document.createElement(tag);
+  if (attrs) for (var k in attrs){
+    if (k === 'class') e.className = attrs[k];
+    else if (k === 'text') e.textContent = attrs[k];
+    else if (k.slice(0,2) === 'on') e.addEventListener(k.slice(2), attrs[k]);
+    else if (attrs[k] !== false && attrs[k] != null) e.setAttribute(k, attrs[k] === true ? '' : attrs[k]);
+  }
+  (kids || []).forEach(function(c){ if (c != null) e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+  return e;
+}
+function clear(){ stopVideo(); app.innerHTML = ''; window.scrollTo(0,0); }
+function store(k, v){ try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+function load(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } }
+function modInfo(n){ return MODULES[n-1]; }
+function modStatus(n){ return progressData.modules[n-1]; }
+function isUnlocked(n){ return n === 1 || modStatus(n-1).passed; }
+function passCount(){ return progressData.modules.filter(function(m){ return m.passed; }).length; }
+function nextModule(){ for (var i=1;i<=MODULES.length;i++) if (!modStatus(i).passed) return i; return null; }
+
+function api(action, extra){
+  var body = {action: action, name: who.name, pin: who.pin};
+  for (var k in (extra||{})) body[k] = extra[k];
+  var ctrl = ('AbortController' in window) ? new AbortController() : null;
+  var t = ctrl ? setTimeout(function(){ ctrl.abort(); }, 30000) : null;
+  return fetch(API_URL, {method:'POST', body: JSON.stringify(body), signal: ctrl ? ctrl.signal : undefined})
+    .then(function(r){ return r.json(); })
+    .catch(function(){ return {ok:false, error:'network', message:'We could not connect. Please check that the internet is working, then try again.'}; })
+    .then(function(res){ if (t) clearTimeout(t); return res; });
+}
+
+/* ---------- sign in ---------- */
+function showLogin(errorText){
+  clear(); signoutBtn.hidden = true;
+  if (!API_URL || API_URL.indexOf('PASTE_') === 0){
+    app.appendChild(el('div',{class:'card'},[el('h1',{text:'Employee Training'}),
+      el('p',{class:'msg info',text:'Training is being set up. Please check back soon.'})]));
+    return;
+  }
+  var saved = load(LOGIN_KEY) || {};
+  var name = el('input',{class:'text',id:'name',type:'text',autocomplete:'given-name',autocapitalize:'words',value:saved.name||''});
+  var pin = el('input',{class:'text',id:'pin',type:'password',inputmode:'numeric',pattern:'[0-9]*',maxlength:'4',autocomplete:'off'});
+  var remember = el('input',{type:'checkbox',id:'remember',checked:true});
+  var btn = el('button',{class:'btn big',type:'submit',text:'Sign In'});
+  var err = el('div',{role:'alert'});
+  if (errorText) err.appendChild(el('p',{class:'msg error',text:errorText}));
+  var form = el('form',{class:'card',novalidate:true,onsubmit:function(ev){
+    ev.preventDefault();
+    var n = name.value.trim(), p = pin.value.trim();
+    err.innerHTML = '';
+    if (!n || !/^\d{4}$/.test(p)){ err.appendChild(el('p',{class:'msg error',text:'Please type your first name and your 4-digit PIN.'})); return; }
+    btn.disabled = true; btn.innerHTML = ''; btn.appendChild(el('span',{class:'spinner'})); btn.appendChild(document.createTextNode(' Signing in...'));
+    who = {name:n, pin:p};
+    api('login').then(function(res){
+      if (!res.ok){ who = null; showLogin(res.message); return; }
+      who.name = res.name;
+      store(LOGIN_KEY, remember.checked ? who : {name: who.name});
+      progressData = res; showHome();
+    });
+  }},[
+    el('h1',{text:'Employee Training'}),
+    el('p',{class:'hint',text:'Welcome. Please sign in to start or continue your training.'}),
+    err,
+    el('div',{style:'margin-top:20px'},[el('label',{class:'field',for:'name',text:'Your first name'}),name]),
+    el('div',{style:'margin-top:22px'},[el('label',{class:'field',for:'pin',text:'Your 4-digit PIN'}),pin,
+      el('p',{class:'hint',style:'margin-top:6px',text:'Suzette gave you this number.'})]),
+    el('label',{class:'check',for:'remember'},[remember,'Keep me signed in on this computer']),
+    btn
+  ]);
+  app.appendChild(form);
+  (saved.name ? pin : name).focus();
+}
+
+function signOut(){ store(LOGIN_KEY, who ? {name: who.name} : null); who = null; progressData = null; showLogin(); }
+signoutBtn.addEventListener('click', signOut);
+
+/* ---------- home (list of modules) ---------- */
+function showHome(){
+  clear(); signoutBtn.hidden = false;
+  var done = passCount(), total = MODULES.length, next = nextModule();
+  var top = el('div',{class:'card'},[
+    el('h1',{text:'Welcome, ' + progressData.name + '.'}),
+    el('p',{class:'overall',text:'You have finished ' + done + ' of ' + total + ' training modules.'}),
+    el('div',{class:'bar',role:'progressbar','aria-valuemin':'0','aria-valuemax':'100','aria-valuenow':String(Math.round(done/total*100)),'aria-label':'Training finished'},
+      [el('span',{style:'width:' + Math.round(done/total*100) + '%'})]),
+    el('div',{style:'margin-top:24px'},[ next
+      ? el('button',{class:'btn big',onclick:function(){ showModule(next); },text:(done ? 'Continue: Module ' : 'Start: Module ') + next})
+      : el('p',{class:'msg good',text:'You finished all of your training. Great job! Please tell Suzette so you can sign your Training Checklist together.'}) ])
+  ]);
+  app.appendChild(top);
+  var list = el('ul',{class:'modlist'});
+  MODULES.forEach(function(m){
+    var s = modStatus(m.n), open = isUnlocked(m.n);
+    var badge = s.passed ? el('span',{class:'status done',text:'Done ✓  ' + s.bestScore + ' of ' + s.total})
+              : open ? el('span',{class:'status next',text:'Up next'})
+              : el('span',{class:'status locked',text:'Locked'});
+    var right = el('div',{style:'display:flex;align-items:center;gap:12px;flex-wrap:wrap'},[badge,
+      open ? el('button',{class:'btn ' + (s.passed ? 'secondary' : ''),onclick:function(){ showModule(m.n); },
+                          text: s.passed ? 'Watch again' : 'Open', 'aria-label':(s.passed ? 'Watch again: ' : 'Open: ') + 'Module ' + m.n}) : null]);
+    list.appendChild(el('li',null,[el('div',{class:'name'},[el('span',{class:'num',text:m.n + '.'}),m.title]), right]));
+  });
+  app.appendChild(el('div',{class:'card'},[el('h2',{text:'Your modules',style:'margin-bottom:10px'}),
+    el('p',{class:'hint',text:'Each module opens after you pass the one before it.'}), list]));
+}
+
+/* ---------- one module ---------- */
+var view = null; // {n, percentEl, barEl, quizBox, reported}
+
+function watchKey(n){ return 'bh_watch_' + who.name.toLowerCase() + '_' + n + '_r' + modStatus(n).round; }
+function posKey(n){ return 'bh_pos_' + who.name.toLowerCase() + '_' + n; }
+
+function currentPercent(n){
+  var s = modStatus(n), local = load(watchKey(n));
+  var localPct = local && local.d ? Math.min(100, Math.round(local.s.length / local.d * 100)) : 0;
+  return Math.max(s.percent || 0, localPct);
+}
+
+function showModule(n){
+  if (!isUnlocked(n)) { showHome(); return; }
+  clear();
+  var m = modInfo(n), s = modStatus(n);
+  view = {n:n, reported: s.percent || 0};
+  var pctText = el('strong'), barFill = el('span'), note = el('p',{class:'hint',style:'margin-top:8px'});
+  var bar = el('div',{class:'bar',role:'progressbar','aria-valuemin':'0','aria-valuemax':'100','aria-label':'How much of the video you have watched'},[barFill]);
+  view.pctText = pctText; view.barFill = barFill; view.bar = bar; view.note = note;
+  var videoBox = el('div',{class:'video'});
+  view.quizBox = el('div');
+
+  app.appendChild(el('button',{class:'back',onclick:showHome,text:'← Back to all modules'}));
+  app.appendChild(el('div',{class:'card'},[
+    el('p',{class:'hint',style:'margin:0',text:'Module ' + n + ' of ' + MODULES.length}),
+    el('h1',{text:m.title,style:'margin:4px 0 18px'}),
+    videoBox,
+    el('div',{class:'watch'},[ el('div',{class:'label'},[el('span',{text:'You have watched'}),pctText]), bar, note ])
+  ]));
+  app.appendChild(view.quizBox);
+
+  if (s.mustRewatch){
+    view.quizBox.appendChild(el('p',{class:'msg info',text:'Please watch this video again. The quiz will open again when you reach ' + UNLOCK_AT + '%.'}));
+  }
+  updateWatch();
+  if (VIDEOS[n]) startVideo(videoBox, n);
+  else videoBox.appendChild(el('div',{class:'placeholder',text:'This video is not ready yet. Please check back soon.'}));
+  renderQuizArea();
+}
+
+function updateWatch(){
+  if (!view) return;
+  var p = currentPercent(view.n);
+  view.pctText.textContent = p + '%';
+  view.barFill.style.width = p + '%';
+  view.bar.setAttribute('aria-valuenow', String(p));
+  var s = modStatus(view.n);
+  view.note.textContent = s.passed ? 'You already passed this module.'
+    : p >= UNLOCK_AT ? 'Great! You can take the quiz below.'
+    : 'The quiz opens when you reach ' + UNLOCK_AT + '%. Watch the whole video. Skipping ahead does not count.';
+}
+
+function quizReady(n){
+  var s = modStatus(n);
+  return !s.passed && currentPercent(n) >= UNLOCK_AT && (!s.mustRewatch || s.percent >= UNLOCK_AT);
+}
+
+function renderQuizArea(){
+  if (!view) return;
+  var n = view.n, s = modStatus(n), box = view.quizBox;
+  if (box.dataset.state === 'quiz' || box.dataset.state === 'result') return;
+  box.innerHTML = ''; box.dataset.state = 'gate';
+  if (s.passed){
+    box.appendChild(el('div',{class:'card center'},[
+      el('p',{class:'msg good',text:'You passed this quiz with ' + s.bestScore + ' out of ' + s.total + '.'}),
+      nextButton(n)]));
+    return;
+  }
+  if (s.mustRewatch && s.percent < UNLOCK_AT){
+    box.appendChild(el('div',{class:'card'},[el('h2',{text:'Quiz'}),
+      el('p',{class:'msg info',text:'Please watch the video again. The quiz will open again when you reach ' + UNLOCK_AT + '%.'})]));
+    return;
+  }
+  var ready = quizReady(n);
+  box.appendChild(el('div',{class:'card'},[
+    el('h2',{text:'Quiz'}),
+    el('p',{text: ready ? 'You are ready. The quiz has ' + modInfo(n).q.length + ' questions. You need ' + Math.ceil(modInfo(n).q.length*0.8) + ' right to pass.'
+                        : 'The quiz opens when you have watched ' + UNLOCK_AT + '% of the video.'}),
+    el('button',{class:'btn big',disabled:!ready,onclick:function(){ startQuiz(n); },text: ready ? 'Take the Quiz' : 'Quiz opens at ' + UNLOCK_AT + '%'})
+  ]));
+}
+
+function nextButton(n){
+  if (n < MODULES.length) return el('button',{class:'btn big',onclick:function(){ showModule(n+1); },text:'Go to Module ' + (n+1)});
+  return el('button',{class:'btn big',onclick:showHome,text:'Back to my modules'});
+}
+
+/* ---------- video and the "% watched" bar ---------- */
+var ytReady = null;
+function loadYouTube(){
+  if (ytReady) return ytReady;
+  ytReady = new Promise(function(resolve){
+    if (window.YT && window.YT.Player) { resolve(); return; }
+    window.onYouTubeIframeAPIReady = resolve;
+    var s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(s);
+  });
+  return ytReady;
+}
+
+function startVideo(box, n){
+  var holder = el('div',{id:'player'}); box.appendChild(holder);
+  var startAt = Math.max(0, Math.floor(load(posKey(n)) || 0));
+  loadYouTube().then(function(){
+    if (!view || view.n !== n) return;
+    var lastT = null;
+    player = new YT.Player('player', {
+      host: 'https://www.youtube-nocookie.com', videoId: VIDEOS[n],
+      playerVars: {rel:0, modestbranding:1, playsinline:1, start:startAt},
+      events: {
+        onStateChange: function(e){ if (e.data !== 1) { lastT = null; report(false); } }
+      }
+    });
+    ticker = setInterval(function(){
+      if (!player || !player.getPlayerState || player.getPlayerState() !== 1) return;
+      var t = player.getCurrentTime(), d = Math.floor(player.getDuration() || 0);
+      if (!d) return;
+      store(posKey(n), t > d - 5 ? 0 : t);
+      if (lastT !== null && t >= lastT && t - lastT <= 2.5){
+        var key = watchKey(n), w = load(key) || {d:d, s:[]};
+        w.d = d;
+        var seen = {}; w.s.forEach(function(x){ seen[x] = 1; });
+        for (var sec = Math.floor(lastT); sec <= Math.floor(t) && sec < d; sec++) if (!seen[sec]) { seen[sec] = 1; w.s.push(sec); }
+        store(key, w);
+        updateWatch(); report(false);
+      }
+      lastT = t;
+    }, 1000);
+  });
+}
+
+function stopVideo(){
+  if (ticker) { clearInterval(ticker); ticker = null; }
+  if (view) report(true);
+  if (player && player.destroy) { try { player.destroy(); } catch(e){} }
+  player = null; view = null;
+}
+
+var reporting = false;
+function report(force){
+  if (!view || !who) return;
+  var n = view.n, p = currentPercent(n), s = modStatus(n);
+  var crossed = p >= UNLOCK_AT && view.reported < UNLOCK_AT;
+  if (reporting || p <= view.reported) return;
+  if (!force && !crossed && p - view.reported < 10) return;
+  reporting = true;
+  var sent = p, v = view;
+  api('progress', {module:n, percent:sent, round:s.round}).then(function(res){
+    reporting = false;
+    if (res && res.ok && res.module){
+      progressData.modules[n-1] = res.module;
+      if (v === view) { view.reported = sent; updateWatch(); renderQuizArea(); }
+    }
+  });
+}
+
+/* ---------- quiz ---------- */
+function startQuiz(n){
+  var m = modInfo(n), box = view.quizBox;
+  if (player && player.pauseVideo) try { player.pauseVideo(); } catch(e){}
+  box.innerHTML = ''; box.dataset.state = 'quiz';
+  var chosen = new Array(m.q.length);
+  var sets = [];
+  var err = el('div',{role:'alert'});
+  var submit = el('button',{class:'btn big',type:'submit',text:'Submit My Answers'});
+  var form = el('form',{class:'card',novalidate:true,onsubmit:function(ev){
+    ev.preventDefault(); err.innerHTML = '';
+    var missing = [];
+    sets.forEach(function(f,i){ f.classList.toggle('missing', !chosen[i]); if (!chosen[i]) missing.push(i+1); });
+    if (missing.length){
+      err.appendChild(el('p',{class:'msg error',text:'Please answer question' + (missing.length>1?'s ':' ') + missing.join(', ') + '.'}));
+      sets[missing[0]-1].scrollIntoView({behavior:'smooth',block:'center'}); return;
+    }
+    submit.disabled = true; submit.innerHTML = ''; submit.appendChild(el('span',{class:'spinner'})); submit.appendChild(document.createTextNode(' Checking your answers...'));
+    api('submit',{module:n, answers:chosen}).then(function(res){
+      if (!res.ok){
+        submit.disabled = false; submit.textContent = 'Submit My Answers';
+        err.appendChild(el('p',{class:'msg error',text:res.message || 'Something went wrong. Please try again.'})); return;
+      }
+      progressData.modules[n-1] = res.module;
+      showResult(n, res);
+    });
+  }},[el('h2',{text:'Module ' + n + ' Quiz',style:'margin-bottom:6px'}),
+      el('p',{class:'hint',text:'Pick one answer for each question. Then press Submit at the bottom.'})]);
+  m.q.forEach(function(item, i){
+    var f = el('fieldset',{class:'q'},[el('legend',{text:'Question ' + (i+1) + ' of ' + m.q.length})]);
+    f.appendChild(el('p',{style:'font-size:1.1rem;margin:4px 0 0',text:item[0]}));
+    item[1].forEach(function(opt, j){
+      var id = 'q' + i + '_' + j;
+      var input = el('input',{type:'radio',name:'q'+i,id:id,value:LETTERS[j],onchange:function(){
+        chosen[i] = LETTERS[j]; f.classList.remove('missing');
+        f.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('selected'); });
+        lab.classList.add('selected');
+      }});
+      var lab = el('label',{class:'opt',for:id},[input, el('span',{class:'letter',text:LETTERS[j] + '.'}), el('span',{text:opt})]);
+      f.appendChild(lab);
+    });
+    sets.push(f); form.appendChild(f);
+  });
+  form.appendChild(err); form.appendChild(submit);
+  box.appendChild(form);
+  form.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function showResult(n, res){
+  updateWatch();
+  var box = view.quizBox; box.innerHTML = ''; box.dataset.state = 'result';
+  var kids = [el('h2',{text:'Your Result'}),
+              el('p',{class:'score',text:res.score + ' out of ' + res.total})];
+  var missedText = res.missed.length ? 'Please review question' + (res.missed.length>1?'s ':' ') + res.missed.join(', ') + '.' : 'You got every question right!';
+  if (res.passed){
+    kids.push(el('p',{class:'msg good',text:'You passed! ' + missedText}));
+    if (res.allDone) kids.push(el('p',{class:'msg good',text:'You finished all of your training. Great job! Please tell Suzette so you can sign your Training Checklist together.'}));
+    kids.push(nextButton(n));
+  } else if (res.mustRewatch){
+    kids.push(el('p',{class:'msg error',text:'You need ' + Math.ceil(res.total*0.8) + ' right to pass. ' + missedText}));
+    kids.push(el('p',{class:'msg info',text:'Please watch the video again before your next try. The quiz will open again when you reach ' + UNLOCK_AT + '%.'}));
+    kids.push(el('button',{class:'btn big',onclick:function(){ store(posKey(n), 0); showModule(n); },text:'Watch the Video Again'}));
+  } else {
+    kids.push(el('p',{class:'msg error',text:'You need ' + Math.ceil(res.total*0.8) + ' right to pass. ' + missedText}));
+    kids.push(el('p',{text:'You can try again now.'}));
+    kids.push(el('button',{class:'btn big',onclick:function(){ startQuiz(n); },text:'Try the Quiz Again'}));
+  }
+  box.appendChild(el('div',{class:'card result'},kids));
+  box.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ---------- start ---------- */
+(function start(){
+  var saved = load(LOGIN_KEY);
+  if (saved && saved.name && saved.pin && API_URL.indexOf('PASTE_') !== 0){
+    who = {name:saved.name, pin:saved.pin};
+    app.appendChild(el('p',{class:'center'},[el('span',{class:'spinner dark'}),' Loading your training...']));
+    api('login').then(function(res){
+      if (!res.ok){ var msg = res.error === 'network' ? res.message : null; who = null; showLogin(msg); return; }
+      progressData = res; showHome();
+    });
+  } else showLogin();
+})();
+</script>
+</body>
+</html>
